@@ -1,4 +1,4 @@
-# k8s-resource-quota-dashboards
+# Grafana K8S Resource utilization dashboards
 Grafana dashboards for k8s clusters that use kube-prometheus for collecting metrics.
 
 ## About Dashboards
