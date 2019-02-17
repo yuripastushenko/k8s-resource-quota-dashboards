@@ -1,0 +1,1598 @@
+{
+  "__inputs": [],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "5.4.3"
+    },
+    {
+      "type": "panel",
+      "id": "grafana-piechart-panel",
+      "name": "Pie Chart",
+      "version": "1.3.3"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": "5.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "5.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": "5.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1550398887447,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "$source",
+      "description": "100% is the sum of all allocated CPU Requests.",
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 11,
+      "interval": null,
+      "legend": {
+        "show": false,
+        "values": true
+      },
+      "legendType": "Under graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "expr": "sort_desc(sum by (namespace) (kube_resourcequota{resource=\"requests.cpu\",type=\"hard\"}))",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "(CPU) Allocated Requests by Namespace",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "$source",
+      "description": "100% is the sum of all allocated CPU Limits.",
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 12,
+      "interval": null,
+      "legend": {
+        "show": false,
+        "values": true
+      },
+      "legendType": "Under graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "expr": "sort_desc(sum by (namespace) (kube_resourcequota{resource=\"limits.cpu\",type=\"hard\"}))",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "(CPU) Allocated Limits by Namespace",
+      "transparent": false,
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "$source",
+      "description": "100% is the sum of all allocated Memory Requests.",
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "id": 13,
+      "interval": null,
+      "legend": {
+        "show": false,
+        "values": true
+      },
+      "legendType": "Under graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "expr": "sort_desc(sum by (namespace) (kube_resourcequota{resource=\"requests.memory\",type=\"hard\"}))",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "(RAM) Allocated Requests by Namespace",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "$source",
+      "description": "100% is the sum of all allocated Memory Limits.",
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 14,
+      "interval": null,
+      "legend": {
+        "show": false,
+        "values": true
+      },
+      "legendType": "Under graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "expr": "sort_desc(sum by (namespace) (kube_resourcequota{resource=\"limits.memory\",type=\"hard\"}))",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "(RAM) Allocated Limits by Namespace",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$source",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 5
+      },
+      "id": 4,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "expr": "sum (kube_resourcequota{resource=\"limits.cpu\",type=\"hard\"}) / sum(kube_node_status_allocatable_cpu_cores{node!~\"kubemaster.*\"}) * 100",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "sum (kube_resourcequota{resource=\"requests.cpu\",type=\"used\",namespace=\"$namespace\"}) / sum(kube_resourcequota{resource=\"limits.cpu\",type=\"hard\",namespace=\"$namespace\"}) * 100",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "60,90",
+      "title": "(CPU) Namespaces Limits Quota / Cluster Resources",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$source",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 5
+      },
+      "id": 5,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "expr": "sum (kube_resourcequota{resource=\"requests.cpu\",type=\"hard\"}) / sum(kube_node_status_allocatable_cpu_cores{node!~\"kubemaster.*\"}) * 100",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "sum (kube_resourcequota{resource=\"requests.cpu\",type=\"used\",namespace=\"$namespace\"}) / sum(kube_resourcequota{resource=\"limits.cpu\",type=\"hard\",namespace=\"$namespace\"}) * 100",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "60,90",
+      "title": "(CPU) Namespaces Requests Quota  /  Cluster Resources",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$source",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 5
+      },
+      "id": 19,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "expr": "sum (kube_pod_container_resource_requests_cpu_cores{}) / sum(kube_node_status_allocatable_cpu_cores{node!~\"kubemaster.*\"}) * 100",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "sum (kube_resourcequota{resource=\"requests.cpu\",type=\"used\",namespace=\"$namespace\"}) / sum(kube_resourcequota{resource=\"limits.cpu\",type=\"hard\",namespace=\"$namespace\"}) * 100",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "60,90",
+      "title": "(CPU) All Pods Requests  /  Cluster Resources",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$source",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 18,
+        "y": 5
+      },
+      "id": 6,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "expr": "sum (rate (container_cpu_usage_seconds_total{image!=\"\",name=~\"^k8s_.*\"}[1m])) / sum(kube_node_status_allocatable_cpu_cores{node!~\"kubemaster.*\"}) * 100",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "sum (kube_resourcequota{resource=\"requests.cpu\",type=\"used\",namespace=\"$namespace\"}) / sum(kube_resourcequota{resource=\"limits.cpu\",type=\"hard\",namespace=\"$namespace\"}) * 100",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "60,90",
+      "title": "(CPU) Actual Usage / Cluster Resources",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$source",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 11
+      },
+      "id": 7,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "expr": "sum(kube_resourcequota{resource=\"limits.memory\",type=\"hard\"}) / sum(kube_node_status_allocatable_memory_bytes{node!~\"kubemaster.*\"}) * 100",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "sum (kube_resourcequota{resource=\"requests.cpu\",type=\"used\",namespace=\"$namespace\"}) / sum(kube_resourcequota{resource=\"limits.cpu\",type=\"hard\",namespace=\"$namespace\"}) * 100",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "60,90",
+      "title": "(RAM) Namespaces Limits Quota / Cluster Resources",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$source",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 11
+      },
+      "id": 8,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "expr": "sum(kube_resourcequota{resource=\"requests.memory\",type=\"hard\"}) / sum(kube_node_status_allocatable_memory_bytes{node!~\"kubemaster.*\"}) * 100",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "sum (kube_resourcequota{resource=\"requests.cpu\",type=\"used\",namespace=\"$namespace\"}) / sum(kube_resourcequota{resource=\"limits.cpu\",type=\"hard\",namespace=\"$namespace\"}) * 100",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "60,90",
+      "title": "(RAM) Namespaces Requests Quota / Cluster Resources",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$source",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 11
+      },
+      "id": 9,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "expr": "sum (kube_pod_container_resource_requests_memory_bytes) / sum(kube_node_status_allocatable_memory_bytes{node!~\"kubemaster.*\"}) * 100",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "sum (kube_resourcequota{resource=\"requests.cpu\",type=\"used\",namespace=\"$namespace\"}) / sum(kube_resourcequota{resource=\"limits.cpu\",type=\"hard\",namespace=\"$namespace\"}) * 100",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "60,90",
+      "title": "(RAM) All Pods Reqests  /  Cluster Resources",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$source",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 18,
+        "y": 11
+      },
+      "id": 20,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "expr": "sum (container_memory_working_set_bytes{image!=\"\",name=~\"^k8s_.*\"}) / sum(kube_node_status_allocatable_memory_bytes{node!~\"kubemaster.*\"}) * 100",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "sum (kube_resourcequota{resource=\"requests.cpu\",type=\"used\",namespace=\"$namespace\"}) / sum(kube_resourcequota{resource=\"limits.cpu\",type=\"hard\",namespace=\"$namespace\"}) * 100",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "60,90",
+      "title": "(RAM) Actual Usage  /  Cluster Resources",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$source",
+      "description": "This represents the total [CPU resource requests](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) in the cluster.\nFor comparison the total [allocatable CPU cores](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/node-allocatable.md) is also shown.",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {
+        "threshold1Color": "rgba(216, 200, 27, 0.27)",
+        "threshold2Color": "rgba(234, 112, 112, 0.22)"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 17
+      },
+      "id": 1,
+      "isNew": false,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 250,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "CPU Actual Usage",
+          "fill": 5
+        },
+        {
+          "alias": "CPU Actual Usage",
+          "linewidth": 3
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(kube_node_status_allocatable_cpu_cores{node!~\"kubemaster.*\"})",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "CPU All Allocable Resources",
+          "refId": "F"
+        },
+        {
+          "expr": "sum (rate (container_cpu_usage_seconds_total{image!=\"\",name=~\"^k8s_.*\"}[1m]))",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Actual Usage",
+          "refId": "E"
+        },
+        {
+          "expr": "sum (kube_resourcequota{resource=\"limits.cpu\", type=\"hard\"})",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "CPU Quota Limits",
+          "refId": "A",
+          "step": 20
+        },
+        {
+          "expr": "sum(kube_resourcequota{resource=\"requests.cpu\", type=\"hard\"})",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Quota Requests",
+          "refId": "C"
+        },
+        {
+          "expr": "sum(kube_resourcequota{resource=\"limits.cpu\", type=\"used\"})",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "CPU  Used Limits",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(kube_resourcequota{resource=\"requests.cpu\", type=\"used\"})",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Used Requests",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "CPU",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "short",
+          "label": "CPU Cores",
+          "logBase": 1,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$source",
+      "description": "This represents the total [CPU resource requests](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) in the cluster.\nFor comparison the total [allocatable CPU cores](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/node-allocatable.md) is also shown.",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {
+        "threshold1Color": "rgba(216, 200, 27, 0.27)",
+        "threshold2Color": "rgba(234, 112, 112, 0.22)"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "id": 2,
+      "isNew": false,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 250,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Memory Actual Usage",
+          "fill": 5
+        },
+        {
+          "alias": "Memory Actual Usage",
+          "linewidth": 3
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(kube_node_status_allocatable_memory_bytes{node!~\"kubemaster.*\"})",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Memory All Allocable Resources",
+          "refId": "F"
+        },
+        {
+          "expr": "sum (container_memory_working_set_bytes{image!=\"\",name=~\"^k8s_.*\"})",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Memory Actual Usage",
+          "refId": "E"
+        },
+        {
+          "expr": "sum(kube_resourcequota{resource=\"limits.memory\", type=\"hard\"})",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Memory Quota Limits",
+          "refId": "A",
+          "step": 20
+        },
+        {
+          "expr": "sum(kube_resourcequota{resource=\"requests.memory\", type=\"hard\"})",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Memory Quota Requests",
+          "refId": "C"
+        },
+        {
+          "expr": "sum(kube_resourcequota{resource=\"limits.memory\", type=\"used\"})",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Memory Used Limits",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(kube_resourcequota{resource=\"requests.memory\", type=\"used\"})",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 1,
+          "legendFormat": "Memory Used Requests",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Memory",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "bytes",
+          "label": "Memory",
+          "logBase": 1,
+          "min": "0",
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$source",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 0,
+        "y": 29
+      },
+      "id": 16,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "expr": "sum(kubelet_running_pod_count) / sum(kube_node_status_allocatable_pods) * 100",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "sum (kube_resourcequota{resource=\"requests.cpu\",type=\"used\",namespace=\"$namespace\"}) / sum(kube_resourcequota{resource=\"limits.cpu\",type=\"hard\",namespace=\"$namespace\"}) * 100",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "thresholds": "60,90",
+      "title": "Pods Count / Pods quota",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$source",
+      "description": "",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {
+        "threshold1Color": "rgba(216, 200, 27, 0.27)",
+        "threshold2Color": "rgba(234, 112, 112, 0.22)"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 17,
+        "x": 7,
+        "y": 29
+      },
+      "id": 18,
+      "isNew": false,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 250,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Max Pods Per Node",
+          "fill": 5
+        },
+        {
+          "alias": "Max Pods Per Node",
+          "linewidth": 3
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "avg(kube_node_status_allocatable_pods)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Max Pods Per Node",
+          "refId": "D"
+        },
+        {
+          "expr": "sort_desc(sum by (instance) (kubelet_running_pod_count))",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Pods count {{instance}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Pods per node",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "short",
+          "label": "CPU Cores",
+          "logBase": 1,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 16,
+  "style": "dark",
+  "tags": [
+    "kubernetes"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "k8s-int",
+          "value": "k8s-int"
+        },
+        "hide": 0,
+        "label": "Cluster",
+        "name": "source",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "/k8s/",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Kubernetes Cluster Resources",
+  "uid": "nzGBBJHiz",
+  "version": 57
+}
